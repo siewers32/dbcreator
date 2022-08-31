@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::resource('customers', CustomerController::class);
+Route::resource('reservations', ReservationController::class);
+//Route::get('/customers/first', [CustomerController::class, 'first']);
+Route::get('/customers/{id}', [CustomerController::class, 'show']);
+//Route::get('/reservations/{id}', [ReservationController::class, 'show']);
